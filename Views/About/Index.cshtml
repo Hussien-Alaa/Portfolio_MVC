@@ -1,0 +1,87 @@
+﻿@* Views/About/Index.cshtml (Enhanced) *@
+
+@{
+    ViewBag.Title = "About Me";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="about-section py-5">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+              
+                <h1 class="display-4 fw-bold mb-0">About Me</h1>
+                <div class="border-bottom border-3 border-primary w-25 mx-auto mt-3"></div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow border-0 rounded-4 bg-light">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                <i class="bi bi-person-fill fs-4"></i>
+                            </div>
+                            <h3 class="mb-0">Biography</h3>
+                        </div>
+                        <p class="card-text fs-5 lh-lg">@Model.Bio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <br><br><br>
+
+        <!-- Info Cards -->
+        <div class="row justify-content-center g-4 mb-5">
+            <!-- Experience Card -->
+            <div class="col-md-5">
+                <div class="card h-100 shadow border-0 rounded-4 hover-card">
+                    <div class="card-body text-center p-4">
+                        
+                        <h3 class="card-title fw-bold mb-3">@Model.Experience.Title</h3>
+                        <div class="badge bg-primary text-white fs-6 mb-3">@Model.Experience.Years</div>
+                        <div class="card-text">
+                            @foreach (var description in Model.Experience.Descriptions)
+                            {
+                                <p class="mb-1">@description</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="col-md-5">
+                <div class="card h-100 shadow border-0 rounded-4 hover-card">
+                    <div class="card-body text-center p-4">
+                     
+                        <h3 class="card-title fw-bold mb-3">@Model.Education.Title</h3>
+                        <div class="card-text">
+                            @foreach (var institution in Model.Education.Institutions)
+                            {
+                                <div class="mb-2 p-2 bg-light rounded">@institution</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+</section>
+
+<style>
+    .hover-card {
+        transition: transform 0.3s ease;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+        }
+</style>
